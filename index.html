@@ -376,6 +376,11 @@
     grid-template-columns:1fr 160px 180px;
     gap:16px 20px;
   }
+  .grid-login{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px 20px;
+  }
 
   label{
     display:block;
@@ -667,8 +672,46 @@
   }
 
   @media (max-width:640px){
-    .grid-2{ grid-template-columns:1fr; }
+    .grid-2, .grid-login{ grid-template-columns:1fr; }
     .head-copy{ display:none; }
+    .letterhead{ padding:0 16px; gap:12px; }
+
+    .main{ padding-left:18px; padding-right:18px; }
+
+    .stats{ grid-template-columns:1fr 1fr; }
+    .stat{ padding:12px; }
+    .stat .num{ font-size:18px; }
+
+    .controls{ flex-direction:column; align-items:stretch; }
+    .controls input[type=text]{ min-width:0; }
+    .controls select, .controls button{ width:100%; }
+
+    form.filecard{ padding:22px 18px 18px; }
+    form.filecard::after{ left:16px; }
+
+    .row-actions{ flex-direction:column; align-items:stretch; gap:12px; }
+    .row-actions .hint{ text-align:center; }
+    .row-actions button{ width:100%; }
+    .row-actions span[style]{ display:flex; flex-direction:column; gap:10px; width:100%; }
+
+    .authbar{ flex-direction:column; align-items:stretch; text-align:center; padding:14px; gap:10px; border-radius:16px; }
+    .authbtn{ width:100%; padding:10px 16px; }
+
+    .entry{ padding:14px; gap:10px; }
+    .entry .num{ width:30px; font-size:11px; }
+    .entry h3{ font-size:15.5px; }
+
+    .authbtn, .editbtn, .delbtn, .submit, .filepill{ min-height:38px; display:inline-flex; align-items:center; }
+
+    .intro-stack{ flex-direction:column; gap:14px; text-align:center; }
+    #introTitle{ text-align:center; }
+    .intro .seal{ width:54px; height:54px; }
+  }
+
+  @media (max-width:400px){
+    .stats{ grid-template-columns:1fr; }
+    .eyebrow{ font-size:10.5px; letter-spacing:0.22em; }
+    .letterhead .tag{ display:none; }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -710,7 +753,7 @@
     </div>
 
     <form class="filecard loginform" id="loginForm" style="display:none;">
-      <div class="grid-2">
+      <div class="grid-login">
         <div>
           <label for="lEmail">Email</label>
           <input type="text" id="lEmail" autocomplete="username" required>
