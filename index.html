@@ -804,7 +804,7 @@
             <div class="icon">↑</div>
             <div class="txt">
               <span id="dzLabel">Click to choose a file, or drag one here</span>
-              <small id="dzHint">Images, PDFs, or documents — up to 10MB each</small>
+              <small id="dzHint">Images, PDFs, or documents — up to 50MB each</small>
             </div>
             <input type="file" id="fFile" aria-label="Attach a file for this activity">
           </div>
@@ -875,7 +875,7 @@
   const SUPABASE_KEY = 'sb_publishable_p9P61pddplyCodCMy-HKTQ_ySZdCdmy';
   const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  const MAX_BYTES = 10 * 1024 * 1024; // 10MB guard for real Supabase Storage uploads
+  const MAX_BYTES = 50 * 1024 * 1024; // 50MB — Supabase free-tier per-file ceiling
 
   // ---------- INTRO -> DOCK SEQUENCE ----------
   const intro = document.getElementById('intro');
@@ -1116,7 +1116,7 @@
     form.reset();
     pendingFile = null;
     dzLabel.textContent = 'Click to choose a file, or drag one here';
-    dzHint.textContent = 'Images, PDFs, or documents — up to 10MB each';
+    dzHint.textContent = 'Images, PDFs, or documents — up to 50MB each';
     submitBtn.textContent = 'File this entry';
     cancelEditBtn.style.display = 'none';
   }
@@ -1177,7 +1177,7 @@
       return;
     }
     if (pendingFile && pendingFile.size > MAX_BYTES){
-      formError.textContent = 'That file is over the 10MB limit — try a smaller file.';
+      formError.textContent = 'That file is over the 50MB limit — try a smaller file.';
       formError.classList.add('show');
       return;
     }
